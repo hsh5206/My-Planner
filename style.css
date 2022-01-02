@@ -1,0 +1,260 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Jua", sans-serif;
+  background-color: #4b4a54;
+  margin-top: 100px;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+ul {
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 10px;
+}
+
+li {
+  font-size: 18px;
+  align-items: center;
+  text-align: center;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+.mywork li:hover {
+  transition: all 0.5s;
+  transform: scale(1.2);
+  translate: 10px;
+}
+
+td {
+  cursor: pointer;
+  text-align: end;
+  padding-bottom: 50px;
+  padding-right: 10px;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+td:hover {
+  transform: scale(1.1);
+  background-color: #82a0aa;
+}
+
+.checked {
+  transform: scale(1.1);
+  background-color: #82a0aa;
+  color: black;
+}
+
+.now {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.now:hover {
+  transform: scale(1.1);
+}
+
+.year {
+  font-size: 30px;
+  margin-right: 10px;
+}
+.month {
+  font-size: 25px;
+}
+
+.calendar {
+  width: 65%;
+}
+
+.calendar_container {
+  height: 500px;
+}
+
+.month_container {
+  background-color: white;
+  height: 500px;
+  width: 100%;
+  display: none;
+  flex-direction: column;
+}
+
+.before,
+.after {
+  height: 20px;
+}
+
+.month_container_year {
+  text-align: center;
+  font-size: 30px;
+}
+.month_container_year > button {
+  font-size: 20px;
+}
+.month_container_year > button:hover {
+  transform: scale(1.1);
+}
+.month_container_month {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#month_container {
+  width: 80%;
+  height: 70%;
+  background-color: #677381;
+  border-radius: 10px;
+}
+#month_container td {
+  text-align: center;
+  background-color: #2a272a;
+  color: white;
+}
+#month_container td:hover {
+  background-color: #677381;
+}
+
+.table {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+
+#calendar {
+  color: white;
+  background-color: #677381;
+}
+
+.popup {
+  transition: all 0.5s;
+  position: absolute;
+  background-color: #4b4a54;
+  height: 558px;
+  width: 35%;
+  position: absolute;
+  right: 0%;
+  top: 98px;
+  display: none;
+}
+
+.today {
+  color: blanchedalmond;
+  font-size: 20px;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+}
+
+.todo_list {
+  background-color: white;
+  margin: auto;
+  margin-top: 50px;
+  width: 100%;
+  height: 500px;
+  margin-right: 15px;
+}
+
+.work {
+  position: absolute;
+  background-color: white;
+  height: 500px;
+  width: 35%;
+  position: absolute;
+  right: 0%;
+  top: 148px;
+}
+
+.mywork {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mywork span {
+  font-size: 20px;
+  background-color: #677381;
+  color: white;
+  padding: 5px;
+}
+
+.x {
+  color: white;
+}
+
+.items {
+  height: 430px;
+  overflow-y: auto;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 32px;
+}
+
+.item__delete {
+  font-size: 16px;
+  transition: all 300ms ease-in;
+}
+
+.item__delete:hover {
+  color: red;
+  transform: scale(1.1);
+}
+
+.item__divider {
+  width: 90%;
+  height: 1px;
+  background-color: lightgray;
+  margin: auto;
+}
+
+.footer {
+  display: flex;
+}
+
+.footer__input {
+  background-color: #677381;
+  width: 100%;
+  height: 32px;
+  border: none;
+  outline: none;
+  font-size: 24px;
+  padding: 0 16px;
+}
+
+.footer__button {
+  background-color: #677381;
+  width: 48px;
+  height: 32px;
+  font-size: 28px;
+  color: white;
+  transition: transform 300ms ease-in;
+}
+
+.footer__button:hover {
+  transform: scale(1.1);
+}
+
+.buttons button:first-child:hover {
+  color: green;
+}
+.line {
+  text-decoration: line-through red 3px;
+}
