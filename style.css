@@ -160,6 +160,7 @@ td:hover {
 }
 
 .todo_list {
+  text-align: center;
   background-color: white;
   margin: auto;
   margin-top: 50px;
