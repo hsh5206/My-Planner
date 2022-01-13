@@ -290,3 +290,12 @@ td:hover {
   top: 3%;
   z-index: 2;
 }
+
+#clock {
+  position: absolute;
+  right: 30px;
+  top: 2%;
+  z-index: 2;
+  font-size: 35px;
+  transform: translate(-5%, -5%);
+}
