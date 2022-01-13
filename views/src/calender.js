@@ -87,10 +87,10 @@ export default class Calender {
     if (temp) {
       temp.classList.remove('checked')
     }
-
-    if (e.target == e.currentTarget) {
+    if (isNaN(Number(e.target.innerText))) {
       return
     }
+
     if (e.target.innerText == '') {
       return
     }

@@ -67,10 +67,10 @@ td:hover {
   margin: 10px;
   cursor: pointer;
   transition: all 0.3s;
-  width: 30%;
+  width: 40%;
   margin-left: 50%;
   position: relative;
-  right: 15%;
+  right: 20%;
   transform: scale(1.1);
 }
 .now:hover {
