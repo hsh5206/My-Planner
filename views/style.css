@@ -279,3 +279,10 @@ td:hover {
 .line {
   text-decoration: line-through red 3px;
 }
+
+#weather {
+  position: absolute;
+  right: 30px;
+  top: 3%;
+  z-index: 2;
+}
