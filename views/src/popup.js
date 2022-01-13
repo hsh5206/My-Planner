@@ -83,9 +83,11 @@ export default class PopUp {
       .then((res) => res.json())
       .then((response) => console.log('Success: ', JSON.stringify(response)))
       .catch((error) => console.log(error))
+    /*
     const item = this.createItem(text)
     this.items.appendChild(item)
     item.scrollIntoView({ block: 'center' })
+    */
     this.input.value = ''
     this.input.focus()
     this.printToDo({ todo: `${text}` })
@@ -118,7 +120,7 @@ export default class PopUp {
       let text = itemRow.firstChild.firstChild.innerHTML
       text = String(text)
       let param = ''
-      param = this.today.innerHTML.split('.').join('_')
+      param = this.today.innerHTML.split('. ').join('_')
       const config = {
         method: 'post',
         body: JSON.stringify({ todo: text }),
