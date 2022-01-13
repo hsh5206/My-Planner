@@ -21,7 +21,12 @@ export default class PopUp {
     })
   }
 
-  disablePopup() {
+  disablePopup(text) {
+    console.log(text)
+    for (let i = 0; i < text.length; i++) {
+      this.printToDo(text[i])
+    }
+
     this.popup.style.display = 'flex'
   }
 
@@ -30,6 +35,10 @@ export default class PopUp {
   }
 
   hide = () => {
+    const itemRow = document.querySelectorAll('.items > li')
+    for (let i = 0; i < itemRow.length; i++) {
+      itemRow[i].remove()
+    }
     this.popup.style.display = 'none'
     const temp = document.querySelector('.checked')
     if (temp) {
@@ -37,21 +46,48 @@ export default class PopUp {
     }
   }
 
-  onAdd() {
-    const text = this.input.value
-    if (text === '') {
-      this.input.focus()
-      return
-    }
-
-    const item = this.createItem(text)
+  printToDo(data) {
+    const text = data.todo
+    const item = this.createItem(text, data.isdone)
     this.items.appendChild(item)
     item.scrollIntoView({ block: 'center' })
     this.input.value = ''
     this.input.focus()
   }
 
-  createItem(text) {
+  onAdd() {
+    const text = this.input.value
+    let param = ''
+    param = this.today.innerHTML.split('.').join('_')
+
+    if (text === '') {
+      this.input.focus()
+      return
+    }
+
+    //server
+    const config = {
+      method: 'post',
+      body: JSON.stringify({ todo: text }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    fetch(`/todos/${param}/add`, config)
+      .then((res) => res.json())
+      .then((response) => console.log('Success: ', JSON.stringify(response)))
+      .catch((error) => console.log(error))
+    /*
+    const item = this.createItem(text)
+    this.items.appendChild(item)
+    item.scrollIntoView({ block: 'center' })
+    */
+    this.input.value = ''
+    this.input.focus()
+    this.printToDo(text)
+  }
+
+  createItem(text, option) {
     const itemRow = document.createElement('li')
     itemRow.setAttribute('class', 'item__row')
 
@@ -68,15 +104,59 @@ export default class PopUp {
     const checkBtn = document.createElement('button')
     checkBtn.setAttribute('class', 'item__delete')
     checkBtn.innerHTML = '<i class="fas fa-check"></i>'
-    checkBtn.addEventListener('click', () => {
-      console.log(itemRow)
+
+    if (option === 1) {
       itemRow.classList.add('line')
+    } else {
+      itemRow.classList.remove('line')
+    }
+    checkBtn.addEventListener('click', () => {
+      let text = itemRow.firstChild.firstChild.innerHTML
+      text = String(text)
+      let param = ''
+      param = this.today.innerHTML.split('.').join('_')
+      const config = {
+        method: 'post',
+        body: JSON.stringify({ todo: text }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+
+      if (itemRow.classList.contains('line')) {
+        itemRow.classList.remove('line')
+        fetch(`/todos/${param}/undone`, config)
+          .then((res) => res.json())
+          .then((response) => console.log('Success: ', response))
+          .catch((error) => console.log(error))
+      } else {
+        itemRow.classList.add('line')
+        fetch(`/todos/${param}/done`, config)
+          .then((res) => res.json())
+          .then((response) => console.log('Success: ', response))
+          .catch((error) => console.log(error))
+      }
     })
 
     const deleteBtn = document.createElement('button')
     deleteBtn.setAttribute('class', 'item__delete')
     deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>'
     deleteBtn.addEventListener('click', () => {
+      let text = itemRow.firstChild.firstChild.innerHTML
+      text = String(text)
+      let param = ''
+      param = this.today.innerHTML.split('.').join('_')
+      const config = {
+        method: 'post',
+        body: JSON.stringify({ todo: text }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+      fetch(`/todos/${param}/delete`, config)
+        .then((res) => res.json())
+        .then((response) => console.log('Success: ', response))
+        .catch((error) => console.log(error))
       itemRow.remove()
     })
 

@@ -1,0 +1,5 @@
+CREATE TABLE Timelines (
+  id INT NOT NULL AUTO_INCREMENT,
+  time VARCHAR(20) NOT NULL,
+  PRIMARY KEY(id)
+);

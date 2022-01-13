@@ -77,6 +77,7 @@ export default class Calender {
   }
 
   tableClick = (e) => {
+    popup.hide()
     const temp = document.querySelector('.checked')
     if (temp) {
       temp.classList.remove('checked')
@@ -91,10 +92,20 @@ export default class Calender {
     const month = String(this.current_month)
     const day = String(this.current_day)
 
-    popup.disablePopup()
-
     const popup_today = document.querySelector('.today')
     popup_today.innerHTML = `${year}.${month}.${day}`
+    //server
+    const config = {
+      method: 'get',
+    }
+    const param = `${year}_${month}_${day}`
+    fetch(`/todos/${param}`, config)
+      .then((res) => res.json())
+      .then((data) => {
+        return JSON.stringify(data)
+      })
+      .then((data) => popup.disablePopup(JSON.parse(data)))
+      .catch((error) => console.log(error))
   }
 
   checkLeapYear(year) {
@@ -154,7 +165,7 @@ export default class Calender {
         h.push('<tr>')
       }
 
-      h.push(`<td> ${data[i]} </td>`)
+      h.push(`<td>${data[i]}</td>`)
     }
     h.push('</tr>')
 
