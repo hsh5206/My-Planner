@@ -108,6 +108,9 @@ export default class Calender {
     //server
     const config = {
       method: 'get',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     }
     const param = `${year}_${month}_${day}`
     fetch(`/todos/${param}`, config)

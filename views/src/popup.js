@@ -64,7 +64,7 @@ export default class PopUp {
   onAdd() {
     const text = this.input.value
     let param = ''
-    param = this.today.innerHTML.split('.').join('_')
+    param = this.today.innerHTML.split('. ').join('_')
 
     if (text === '') {
       this.input.focus()
@@ -90,7 +90,7 @@ export default class PopUp {
     */
     this.input.value = ''
     this.input.focus()
-    this.printToDo(text)
+    this.printToDo({ todo: `${text}` })
   }
 
   createItem(text, option) {
@@ -151,7 +151,7 @@ export default class PopUp {
       let text = itemRow.firstChild.firstChild.innerHTML
       text = String(text)
       let param = ''
-      param = this.today.innerHTML.split('.').join('_')
+      param = this.today.innerHTML.split('. ').join('_')
       const config = {
         method: 'post',
         body: JSON.stringify({ todo: text }),

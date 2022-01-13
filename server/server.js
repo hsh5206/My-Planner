@@ -54,7 +54,7 @@ toDoRouter.post('/:id/add', async (req, res) => {
     const todos = await pool.query(
       `INSERT INTO Todos (num, todo) VALUES (${data}, '${todo}')`
     )
-    res.send(todos)
+    res.json(todos)
   } catch (err) {
     res.send(err)
   }

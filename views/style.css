@@ -67,9 +67,14 @@ td:hover {
   margin: 10px;
   cursor: pointer;
   transition: all 0.3s;
+  width: 30%;
+  margin-left: 50%;
+  position: relative;
+  right: 15%;
+  transform: scale(1.1);
 }
 .now:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .year {
@@ -83,10 +88,12 @@ td:hover {
 .calendar {
   width: 60%;
   margin-left: 3%;
+  height: 500px;
 }
 
 .calendar_container {
   height: 500px;
+  display: inline;
 }
 
 .month_container {
@@ -103,14 +110,19 @@ td:hover {
 }
 
 .month_container_year {
+  margin-top: 20px;
   text-align: center;
-  font-size: 30px;
+  font-size: 40px;
 }
 .month_container_year > button {
-  font-size: 20px;
+  font-size: 30px;
+  transition-duration: 1s;
 }
-.month_container_year > button:hover {
-  transform: scale(1.1);
+.month_container_year > button:first-child:hover {
+  transform: scale(1.2) translateX(-50%);
+}
+.month_container_year > button:last-child:hover {
+  transform: scale(1.2) translateX(50%);
 }
 .month_container_month {
   height: 100%;
@@ -293,7 +305,7 @@ td:hover {
 
 #clock {
   position: absolute;
-  right: 30px;
+  right: 28px;
   top: 2%;
   z-index: 2;
   font-size: 35px;
