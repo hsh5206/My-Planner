@@ -10,6 +10,10 @@ export default class PopUp {
     this.input = document.querySelector('.footer__input')
     this.addBtn = document.querySelector('.footer__button')
 
+    this.today_year
+    this.today_month
+    this.today_day
+
     this.addBtn.addEventListener('click', () => {
       this.onAdd()
     })
@@ -31,6 +35,9 @@ export default class PopUp {
 
   show = (year, month, day) => {
     this.today.innerHTML = `${year}.${month}.${day}`
+    this.today_year = year
+    this.today_month = month
+    this.today_day = day
   }
 
   hide = () => {

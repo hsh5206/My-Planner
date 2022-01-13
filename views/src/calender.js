@@ -14,6 +14,10 @@ export default class Calender {
     this.current_month = new Date().getMonth() + 1
     this.current_day = new Date().getDate()
 
+    this.today_year = this.current_year
+    this.today_month = this.current_month
+    this.today_day = this.current_day
+
     this.now = document.querySelector('.now')
     this.now.addEventListener('click', this.nowClick)
 
@@ -159,10 +163,15 @@ export default class Calender {
       }
     }
 
-    this.renderCalendar(arr_calendar)
+    this.renderCalendar(arr_calendar, year, month)
   }
 
-  renderCalendar(data) {
+  renderCalendar(data, year, month) {
+    let isTrue = 0
+    if (year == this.today_year && month == this.today_month) {
+      isTrue = 1
+    }
+
     let h = []
     for (let i = 0; i < data.length; i++) {
       if (i == 0) {
@@ -174,7 +183,11 @@ export default class Calender {
       if (data[i] === '') {
         h.push(`<td class="unvisible">${data[i]}</td>`)
       } else {
-        h.push(`<td>${data[i]}</td>`)
+        if (isTrue && data[i] == this.today_day) {
+          h.push(`<td class="istoday">${data[i]}</td>`)
+        } else {
+          h.push(`<td>${data[i]}</td>`)
+        }
       }
     }
     h.push('</tr>')

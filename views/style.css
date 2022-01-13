@@ -166,6 +166,10 @@ td:hover {
   right: 20px;
 }
 
+.istoday {
+  background-color: rosybrown;
+}
+
 .todo_list {
   text-align: center;
   background-color: white;
