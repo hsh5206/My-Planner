@@ -51,6 +51,7 @@ export default class Calender {
       '11월',
       '12월',
     ]
+
     const target = e.target
     for (let i = 0; i < arr.length; i++) {
       if (target.innerHTML == arr[i]) {
@@ -83,6 +84,12 @@ export default class Calender {
       temp.classList.remove('checked')
     }
 
+    if (e.target == e.currentTarget) {
+      return
+    }
+    if (e.target.innerText == '') {
+      return
+    }
     const target = e.target
     target.classList.add('checked')
 
@@ -93,7 +100,7 @@ export default class Calender {
     const day = String(this.current_day)
 
     const popup_today = document.querySelector('.today')
-    popup_today.innerHTML = `${year}.${month}.${day}`
+    popup_today.innerHTML = `${year}. ${month}. ${day}`
     //server
     const config = {
       method: 'get',
@@ -164,8 +171,11 @@ export default class Calender {
         h.push('</tr>')
         h.push('<tr>')
       }
-
-      h.push(`<td>${data[i]}</td>`)
+      if (data[i] === '') {
+        h.push(`<td class="unvisible">${data[i]}</td>`)
+      } else {
+        h.push(`<td>${data[i]}</td>`)
+      }
     }
     h.push('</tr>')
 

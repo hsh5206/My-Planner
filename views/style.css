@@ -1,7 +1,7 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: "Jua", sans-serif;
+  font-family: 'Jua', sans-serif;
   background-color: #4b4a54;
   margin-top: 100px;
 }
@@ -49,6 +49,10 @@ td:hover {
   background-color: #82a0aa;
 }
 
+.unvisible {
+  visibility: hidden;
+}
+
 .checked {
   transform: scale(1.1);
   background-color: #82a0aa;
@@ -77,7 +81,8 @@ td:hover {
 }
 
 .calendar {
-  width: 65%;
+  width: 60%;
+  margin-left: 3%;
 }
 
 .calendar_container {
@@ -132,6 +137,7 @@ td:hover {
   background-color: white;
   width: 100%;
   height: 100%;
+  border-radius: 10px;
 }
 
 #calendar {
@@ -149,6 +155,7 @@ td:hover {
   right: 0%;
   top: 98px;
   display: none;
+  margin-left: 10px;
 }
 
 .today {
@@ -156,7 +163,7 @@ td:hover {
   font-size: 20px;
   position: absolute;
   top: 20px;
-  right: 15px;
+  right: 20px;
 }
 
 .todo_list {
@@ -167,16 +174,20 @@ td:hover {
   width: 100%;
   height: 500px;
   margin-right: 15px;
+  position: relative;
+  right: 5px;
 }
 
 .work {
   position: absolute;
   background-color: white;
   height: 500px;
-  width: 35%;
+  width: 30%;
   position: absolute;
   right: 0%;
   top: 148px;
+  margin-right: 30px;
+  border-radius: 10px;
 }
 
 .mywork {
@@ -195,7 +206,16 @@ td:hover {
 }
 
 .x {
+  position: relative;
+  top: 50px;
+  right: 5px;
+  height: 500px;
   color: white;
+  font-size: 20px;
+}
+.x i :hover {
+  transform: scale(1.1);
+  background-color: #82a0aa;
 }
 
 .items {

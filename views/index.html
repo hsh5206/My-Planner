@@ -1,124 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Plan</title>
-  <script type="module" src="src/main.js" defer></script>
-  <link rel="stylesheet" href="style.css">
-  <script
-    src="https://kit.fontawesome.com/2986e71143.js"
-    crossorigin="anonymous">
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-</head>
-<body>
-  <div class="container">
-    <section class="calendar">
-      <div class="now">
-        <span class="year">YY</span>
-        <span class="month">MM</span>
-      </div>
-      
-      <div class="calendar_container">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>일</th>
-              <th>월</th>
-              <th>화</th>
-              <th>수</th>
-              <th>목</th>
-              <th>금</th>
-              <th>토</th>
-            </tr>
-          </thead>
-          <tbody id="calendar"></tbody>
-        </table>
-      </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Plan</title>
+    <script type="module" src="src/main.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/2986e71143.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <section class="calendar">
+        <div class="now">
+          <span class="year">YY</span>
+          <span class="month">MM</span>
+        </div>
 
-      <section class="month_container">
-        <header class="month_container_year">
-          <button class="before"><i class="fas fa-angle-double-left"></i></button>
-          <sapn>2022</sapn>
-          <button class="after"><i class="fas fa-angle-double-right"></i></button>
-        </header>
-        <div class="month_container_month">
-          <table id="month_container">
-            <tbody>
+        <div class="calendar_container">
+          <table class="table">
+            <thead>
               <tr>
-                <td>01월</td>
-                <td>02월</td>
-                <td>03월</td>
-                <td>04월</td>
+                <th>일</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+                <th>토</th>
               </tr>
-              <tr>
-                <td>05월</td>
-                <td>06월</td>
-                <td>07월</td>
-                <td>08월</td>
-              </tr>
-              <tr>
-                <td>09월</td>
-                <td>10월</td>
-                <td>11월</td>
-                <td>12월</td>
-              </tr>
-            </tbody>
+            </thead>
+            <tbody id="calendar"></tbody>
           </table>
         </div>
-      </section>
-      
-    </section>
 
-    <aside class="work">
-      <div class="mywork">
-        <div class="mynote">
-          <span>My Note</span>
+        <section class="month_container">
+          <header class="month_container_year">
+            <button class="before">
+              <i class="fas fa-angle-double-left"></i>
+            </button>
+            <sapn>2022</sapn>
+            <button class="after">
+              <i class="fas fa-angle-double-right"></i>
+            </button>
+          </header>
+          <div class="month_container_month">
+            <table id="month_container">
+              <tbody>
+                <tr>
+                  <td>01월</td>
+                  <td>02월</td>
+                  <td>03월</td>
+                  <td>04월</td>
+                </tr>
+                <tr>
+                  <td>05월</td>
+                  <td>06월</td>
+                  <td>07월</td>
+                  <td>08월</td>
+                </tr>
+                <tr>
+                  <td>09월</td>
+                  <td>10월</td>
+                  <td>11월</td>
+                  <td>12월</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <aside class="work">
+        <div class="mywork">
+          <div class="mynote">
+            <span>My Note</span>
+            <ul>
+              <li>
+                <a
+                  href="https://chlorinated-lychee-841.notion.site/Coding-3599af576ff244e4b95a20844fb7bf62"
+                  target="_blank"
+                  >노션</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <span>프로젝트</span>
           <ul>
-            <li><a href="https://chlorinated-lychee-841.notion.site/Coding-3599af576ff244e4b95a20844fb7bf62" target="_blank">노션</a></li>
+            <li>
+              <a href="https://github.com/hsh5206" target="_blank">깃허브</a>
+            </li>
+            <li>
+              <a href="https://hsh0607.tistory.com/" target="_blank">블로그</a>
+            </li>
+            <li>
+              <a href="https://solved.ac/profile/hsh5206" target="_blank"
+                >드림 코딩</a
+              >
+            </li>
+            <li>
+              <a href="https://fastcampus.co.kr/me/course" target="_blank"
+                >패스트 캠퍼스</a
+              >
+            </li>
+          </ul>
+          <span>알고리즘</span>
+          <ul>
+            <li>
+              <a href="https://www.acmicpc.net/problemset" target="_blank"
+                >BOJ</a
+              >
+            </li>
+            <li>
+              <a href="https://solved.ac/profile/hsh5206" target="_blank"
+                >solved.ac</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://programmers.co.kr/learn/challenges"
+                target="_blank"
+                >프로그래머스</a
+              >
+            </li>
+          </ul>
+          <span>기타</span>
+          <ul>
+            <li>
+              <li>
+                <a href="https://www.youtube.com/" target="_blank">유튜브</a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/rlrl.7/" target="_blank"
+                >인스타그램</a>
+              </li>
+              
+            </li>
           </ul>
         </div>
-        
+      </aside>
 
-        <span>프로젝트</span>
-        <ul>
-          <li><a href="https://github.com/hsh5206" target="_blank">깃허브</a></li>
-          <li><a href="https://hsh0607.tistory.com/" target="_blank">블로그</a></li>
-          <li><a href="https://solved.ac/profile/hsh5206" target="_blank">드림코딩</a></li>
-        </ul>
-        <span>알고리즘</span>
-        <ul>
-          <li><a href="https://www.acmicpc.net/problemset" target="_blank">백준</a></li>
-          <li><a href="https://solved.ac/profile/hsh5206" target="_blank">백준랭크</a></li>
-          <li><a href="https://www.youtube.com/" target="_blank">유튜브</a></li>
-        </ul>
-        <span>운동</span>
-        <ul>
-          <li><a href="hhttps://www.youtube.com/feed/subscriptions" target="_blank">유튜브</a></li>
-          <li><a href="https://www.instagram.com/rlrl.7/" target="_blank">인스타그램</a></li>
-        </ul>
-      </div>
-      
-    </aside>
-
-    <aside class="popup">
-      <button class="x"><i class="fas fa-angle-double-right"></i></button>
-      <span class="today">YY.MM.DD.MON</span>
-      <div class="todo_list">
-        <header class="header">ToDo List</header>
-        <ul class="items">
-
-        </ul>
-        <footer class="footer">
-          <input type="text" class="footer__input" />
-          <button class="footer__button"><i class="fas fa-plus"></i></button>
-        </footer>
-      </div>
-    </aside>
-  </div>
-</body>
+      <aside class="popup">
+        <button class="x"><i class="fas fa-angle-double-right"></i></button>
+        <span class="today">YY.MM.DD.MON</span>
+        <div class="todo_list">
+          <header class="header">ToDo List</header>
+          <ul class="items"></ul>
+          <footer class="footer">
+            <input type="text" class="footer__input" />
+            <button class="footer__button"><i class="fas fa-plus"></i></button>
+          </footer>
+        </div>
+      </aside>
+    </div>
+  </body>
 </html>

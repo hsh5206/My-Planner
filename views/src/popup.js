@@ -22,7 +22,6 @@ export default class PopUp {
   }
 
   disablePopup(text) {
-    console.log(text)
     for (let i = 0; i < text.length; i++) {
       this.printToDo(text[i])
     }

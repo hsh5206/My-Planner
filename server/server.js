@@ -19,7 +19,6 @@ app.get('/', (req, res) => {
   })
 })
 
-let temp = 0
 const toDoRouter = express.Router()
 app.use('/todos', toDoRouter)
 toDoRouter.param('id', async (req, res, next, value) => {
