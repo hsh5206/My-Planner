@@ -83,11 +83,9 @@ export default class PopUp {
       .then((res) => res.json())
       .then((response) => console.log('Success: ', JSON.stringify(response)))
       .catch((error) => console.log(error))
-    /*
     const item = this.createItem(text)
     this.items.appendChild(item)
     item.scrollIntoView({ block: 'center' })
-    */
     this.input.value = ''
     this.input.focus()
     this.printToDo({ todo: `${text}` })

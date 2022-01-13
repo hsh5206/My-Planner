@@ -165,7 +165,7 @@ td:hover {
   width: 35%;
   position: absolute;
   right: 0%;
-  top: 98px;
+  top: 88px;
   display: none;
   margin-left: 10px;
 }
@@ -242,7 +242,22 @@ td:hover {
 .item {
   display: flex;
   justify-content: space-between;
-  padding: 8px 32px;
+  padding: 10px;
+}
+
+.header {
+  padding-top: 20px;
+  font-size: 18px;
+}
+
+.item div {
+  display: flex;
+  justify-content: end;
+}
+
+.item__name {
+  width: 100%;
+  text-align: start;
 }
 
 .item__delete {
@@ -293,7 +308,7 @@ td:hover {
   color: green;
 }
 .line {
-  text-decoration: line-through red 3px;
+  text-decoration: line-through red 2px;
 }
 
 #weather {
