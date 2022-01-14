@@ -1,6 +1,5 @@
 'use strict'
 import PopUp from './popup.js'
-
 const popup = new PopUp()
 
 export default class Calender {

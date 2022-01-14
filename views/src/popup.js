@@ -3,6 +3,7 @@
 export default class PopUp {
   constructor() {
     this.popup = document.querySelector('.popup')
+    this.work = document.querySelector('.work')
     this.today = document.querySelector('.today')
     this.button = document.querySelector('.x')
     this.button.addEventListener('click', this.hide)
@@ -31,6 +32,7 @@ export default class PopUp {
     }
 
     this.popup.style.display = 'flex'
+    //this.work.style.visibility = 'hidden'
   }
 
   show = (year, month, day) => {
@@ -46,6 +48,7 @@ export default class PopUp {
       itemRow[i].remove()
     }
     this.popup.style.display = 'none'
+    //this.work.style.visibility = 'visible'
     const temp = document.querySelector('.checked')
     if (temp) {
       temp.classList.remove('checked')
