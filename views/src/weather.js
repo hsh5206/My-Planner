@@ -1,3 +1,4 @@
+'use strict'
 const API_KEY = 'd3d4d0bbd1e818640c49d4fe7b154f73'
 
 function onGeoOk(position) {
