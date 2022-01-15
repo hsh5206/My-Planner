@@ -26,35 +26,38 @@ export default class PopUp {
     })
   }
 
+  //pass
   disablePopup(text) {
     for (let i = 0; i < text.length; i++) {
       this.printToDo(text[i])
     }
 
     this.popup.style.display = 'flex'
-    //this.work.style.visibility = 'hidden'
   }
 
-  show = (year, month, day) => {
+  //pass
+  changenow = (year, month, day) => {
     this.today.innerHTML = `${year}.${month}.${day}`
     this.today_year = year
     this.today_month = month
     this.today_day = day
   }
 
+  //pass
   hide = () => {
     const itemRow = document.querySelectorAll('.items > li')
-    for (let i = 0; i < itemRow.length; i++) {
-      itemRow[i].remove()
-    }
+    itemRow.forEach((node) => {
+      node.remove()
+    })
+
     this.popup.style.display = 'none'
-    //this.work.style.visibility = 'visible'
     const temp = document.querySelector('.checked')
     if (temp) {
       temp.classList.remove('checked')
     }
   }
 
+  //pass
   printToDo(data) {
     const text = data.todo
     const item = this.createItem(text, data.isdone)
@@ -86,11 +89,6 @@ export default class PopUp {
       .then((res) => res.json())
       .then((response) => console.log('Success: ', JSON.stringify(response)))
       .catch((error) => console.log(error))
-    /*
-    const item = this.createItem(text)
-    this.items.appendChild(item)
-    item.scrollIntoView({ block: 'center' })
-    */
     this.input.value = ''
     this.input.focus()
     this.printToDo({ todo: `${text}` })
@@ -153,6 +151,8 @@ export default class PopUp {
     deleteBtn.addEventListener('click', () => {
       let text = itemRow.firstChild.firstChild.innerHTML
       text = String(text)
+
+      // server
       let param = ''
       param = this.today.innerHTML.split('. ').join('_')
       const config = {

@@ -33,12 +33,14 @@ export default class Calender {
     })
   }
 
+  //pass
   yearChange = (diff) => {
     this.current_year = this.current_year + diff
     const header = document.querySelector('.month_container_year sapn')
     header.innerText = this.current_year
   }
 
+  //pass
   monthClick = (e) => {
     const arr = [
       '01월',
@@ -63,23 +65,28 @@ export default class Calender {
       }
     }
 
-    const calendar = document.querySelector('.calendar_container')
-    calendar.style.display = 'flex'
-    const month_container = document.querySelector('.month_container')
-    month_container.style.display = 'none'
-    this.now.style.visibility = 'visible'
+    this.nowClick()
     this.changeYearMonth(this.current_year, this.current_month)
   }
 
+  //pass
   nowClick = (e) => {
     const calendar = document.querySelector('.calendar_container')
-    calendar.style.display = 'none'
+    calendar.style.display == 'none'
+      ? (calendar.style.display = 'flex')
+      : (calendar.style.display = 'none')
     const month_container = document.querySelector('.month_container')
-    month_container.style.display = 'flex'
+    month_container.style.display == 'flex'
+      ? (month_container.style.display = 'none')
+      : (month_container.style.display = 'flex')
+
     this.now.style.visibility = 'hidden'
+      ? (this.now.style.visibility = 'visible')
+      : (this.now.style.visibility = 'hidden')
     popup.hide()
   }
 
+  //pass
   tableClick = (e) => {
     popup.hide()
     const temp = document.querySelector('.checked')
@@ -89,7 +96,6 @@ export default class Calender {
     if (isNaN(Number(e.target.innerText))) {
       return
     }
-
     if (e.target.innerText == '') {
       return
     }
@@ -102,8 +108,7 @@ export default class Calender {
     const month = String(this.current_month)
     const day = String(this.current_day)
 
-    const popup_today = document.querySelector('.today')
-    popup_today.innerHTML = `${year}. ${month}. ${day}`
+    popup.today.innerHTML = `${year}. ${month}. ${day}`
     //server
     const config = {
       method: 'get',
@@ -121,6 +126,7 @@ export default class Calender {
       .catch((error) => console.log(error))
   }
 
+  //pass
   checkLeapYear(year) {
     if (year % 400 == 0) {
       return true
@@ -133,6 +139,7 @@ export default class Calender {
     }
   }
 
+  //pass
   getFirstDayOfWeek(year, month) {
     this.change()
 
@@ -141,6 +148,7 @@ export default class Calender {
     return new Date(year + '-' + month + '-01').getDay()
   }
 
+  //pass
   changeYearMonth(year, month) {
     let month_day = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
@@ -168,6 +176,7 @@ export default class Calender {
     this.renderCalendar(arr_calendar, year, month)
   }
 
+  //pass
   renderCalendar(data, year, month) {
     let isTrue = 0
     if (year == this.today_year && month == this.today_month) {
@@ -196,9 +205,10 @@ export default class Calender {
 
     this.calender.innerHTML = h.join('')
 
-    popup.show(this.current_year, this.current_month, this.current_day)
+    popup.changenow(this.current_year, this.current_month, this.current_day)
   }
 
+  //pass
   change() {
     const year = String(this.current_year) + '년'
     const month = String(this.current_month) + '월'
