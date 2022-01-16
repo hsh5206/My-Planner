@@ -72,10 +72,13 @@ export default class Calender {
   //pass
   nowClick = (e) => {
     const calendar = document.querySelector('.calendar_container')
+    console.log(calendar.style.display)
     calendar.style.display == 'none'
       ? (calendar.style.display = 'flex')
       : (calendar.style.display = 'none')
+
     const month_container = document.querySelector('.month_container')
+    console.log(calendar.style.display)
     month_container.style.display == 'flex'
       ? (month_container.style.display = 'none')
       : (month_container.style.display = 'flex')

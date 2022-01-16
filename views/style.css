@@ -296,7 +296,7 @@ button {
   height: 32px;
   border: none;
   outline: none;
-  font-size: 24px;
+  font-size: 18px;
   padding: 0 16px;
   border-bottom-left-radius: 10px;
   color: white;
@@ -346,6 +346,64 @@ button {
   z-index: 2;
   font-size: 35px;
   transform: translate(-5%, -5%);
+}
+
+.overviewBtn {
+  position: absolute;
+  z-index: 2;
+  top: 130px;
+  right: 38%;
+  cursor: pointer;
+}
+
+.overviewBtn:hover {
+  transform: scaleX(1.1);
+  color: rosybrown;
+}
+
+.BtnAfter {
+  right: 3%;
+}
+.overviews_container {
+  position: absolute;
+  top: 142px;
+}
+
+.overviews {
+  padding: 5px;
+  display: none;
+  width: 100%;
+  height: 240px;
+}
+
+.overview {
+  display: flex;
+  flex-direction: column;
+  width: 160px;
+  height: 200px;
+  align-items: center;
+}
+
+.overview_day {
+  color: white;
+}
+
+.overview_todo_list {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  border-radius: 10px;
+}
+.overview_items {
+  height: 140px;
+}
+.overview_footer__input {
+  width: 80%;
+  border: none;
+  outline: none;
+  font-size: 18px;
 }
 
 @media screen and (max-width: 661px) {
@@ -459,5 +517,10 @@ button {
     color: white;
     transition: transform 300ms ease-in;
     border-radius: 10px;
+  }
+
+  .overviewBtn {
+    top: 130px;
+    right: 3%;
   }
 }
