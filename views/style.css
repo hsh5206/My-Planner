@@ -35,7 +35,7 @@ a {
   translate: 10px;
 }
 
-td {
+#calendar > tr > td {
   cursor: pointer;
   text-align: end;
   padding-bottom: 50px;
@@ -44,7 +44,7 @@ td {
   transition: all 0.3s;
 }
 
-td:hover {
+#calendar > tr > td:hover {
   transform: scale(1.1);
   background-color: #82a0aa;
 }
@@ -362,30 +362,40 @@ button {
 }
 
 .BtnAfter {
-  right: 3%;
-}
-.overviews_container {
-  position: absolute;
-  top: 142px;
+  font-size: 50px;
+  top: 80px;
+  left: 5%;
 }
 
-.overviews {
-  padding: 5px;
+.overviews_container {
   display: none;
-  width: 100%;
-  height: 240px;
+  position: absolute;
+  top: 180px;
+  width: 1400px;
+}
+
+.overviews_table {
+  background-color: #677381;
+  border-radius: 10px;
+  margin: 1%;
+}
+
+#overviews > tr > td {
+  cursor: pointer;
+  text-align: end;
+  padding-bottom: 30px;
+  padding-right: 10px;
+  border-radius: 10px;
+  transition: all 0.3s;
 }
 
 .overview {
-  display: flex;
-  flex-direction: column;
-  width: 160px;
-  height: 200px;
-  align-items: center;
+  width: 200px;
 }
 
 .overview_day {
   color: white;
+  text-align: center;
 }
 
 .overview_todo_list {
@@ -396,9 +406,16 @@ button {
   height: 100%;
   border-radius: 10px;
 }
+
 .overview_items {
-  height: 140px;
+  height: 180px;
+  overflow-y: scroll;
 }
+
+.overview_items li {
+  color: grey;
+}
+
 .overview_footer__input {
   width: 80%;
   border: none;
@@ -522,5 +539,10 @@ button {
   .overviewBtn {
     top: 130px;
     right: 3%;
+  }
+  .BtnAfter {
+    font-size: 50px;
+    top: 80px;
+    left: 5%;
   }
 }
