@@ -168,6 +168,7 @@ a {
   right: 0%;
   top: 95px;
   display: none;
+  border-radius: 10px;
 }
 
 .today {
@@ -338,6 +339,10 @@ button {
   top: 3%;
   z-index: 2;
 }
+.overview_weather {
+  left: 6%;
+  right: 0px;
+}
 
 #clock {
   position: absolute;
@@ -346,6 +351,10 @@ button {
   z-index: 2;
   font-size: 35px;
   transform: translate(-5%, -5%);
+}
+.overview_clock {
+  left: 10%;
+  right: 0px;
 }
 
 .overviewBtn {
@@ -433,6 +442,12 @@ button {
   left: 28%;
   top: 30%;
   z-index: 2;
+  transform: translate3d(0, 0, 2px);
+  -webkit-transform: translate3d(0, 0, 2px);
+  -webkit-transform: translateZ(2px);
+  -moz-transform: translateZ(2px);
+  -o-transform: translateZ(2px);
+  transform: translateZ(2px);
 }
 
 .background_cover {
@@ -444,6 +459,12 @@ button {
   height: 100%;
   opacity: 50%;
   z-index: 1;
+  transform: translate3d(0, 0, 1px);
+  -webkit-transform: translate3d(0, 0, 1px);
+  -webkit-transform: translateZ(1px);
+  -moz-transform: translateZ(1px);
+  -o-transform: translateZ(1px);
+  transform: translateZ(1px);
 }
 
 @media screen and (max-width: 661px) {
@@ -567,5 +588,34 @@ button {
     font-size: 50px;
     top: 80px;
     left: 5%;
+  }
+  .overview_popup {
+    width: 35%;
+    display: none;
+    position: absolute;
+    left: 28%;
+    top: 30%;
+    z-index: 2;
+    transform: translate3d(0, 0, 2px);
+    -webkit-transform: translate3d(0, 0, 2px);
+    -webkit-transform: translateZ(2px);
+    -moz-transform: translateZ(2px);
+    -o-transform: translateZ(2px);
+    transform: translateZ(2px);
+  }
+  #weather {
+    position: absolute;
+    right: 30px;
+    top: 3%;
+    z-index: 2;
+  }
+
+  #clock {
+    position: absolute;
+    right: 28px;
+    top: 2%;
+    z-index: 2;
+    font-size: 35px;
+    transform: translate(-5%, -5%);
   }
 }

@@ -7,6 +7,7 @@ const popup = new PopUp()
 const popup_window = document.querySelector('.popup')
 const background_cover = document.querySelector('.background_cover')
 const clock = document.querySelector('#clock')
+const weather = document.querySelector('#weather')
 const overViewBtn = document.querySelector('.overviewBtn')
 const allThing = document.querySelector('.container')
 const overviews = document.querySelector('.overviews_container')
@@ -24,7 +25,6 @@ let year = 0
 let month = 0
 let day = 0
 let divider = 8
-let thisMonth = 0
 let arr_calendar = []
 
 function change() {
@@ -34,13 +34,15 @@ function change() {
     overViewBtn.innerHTML = '+ OverView'
     overViewBtn.classList.remove('BtnAfter')
     overviews.style.display = 'none'
-    clock.style.right = '28px'
+    clock.classList.remove('overview_clock')
+    weather.classList.remove('overview_weather')
   } else {
     allThing.style.display = 'none'
     overViewBtn.innerHTML = '<< Back'
     overViewBtn.classList.add('BtnAfter')
     overviews.style.display = 'flex'
-    clock.style.left = '10%'
+    clock.classList.add('overview_clock')
+    weather.classList.add('overview_weather')
   }
   renderOverviews(calender.current_year, calender.current_month)
 }
@@ -56,7 +58,6 @@ function renderOverviews(cyear, cmonth) {
     if (calender.checkLeapYear(year)) month_day[1] = 29
   }
 
-  thisMonth = month_day[month]
   let first_day_of_week = calender.getFirstDayOfWeek(year, month)
   arr_calendar = []
   for (let i = 0; i < first_day_of_week; i++) {
@@ -160,29 +161,25 @@ function reRenderOverviews(start, arr) {
 
 function overViewTableClick(e) {
   popup.hide()
-  if (e.path.length < 10) {
-    return
-  } else {
-    let param = ''
-    if (e.target.nodeName == 'LI') {
-      param =
-        e.target.parentNode.parentNode.parentNode.childNodes[1].innerText.split(
-          '.'
-        )
-      popup.changenow(param[0], param[1], param[2])
-      param = param.join('_')
-      renderToServer(param)
-    } else if (e.target.nodeName == 'UL') {
-      param = e.target.parentNode.parentNode.childNodes[1].innerText.split('.')
-      popup.changenow(param[0], param[1], param[2])
-      param = param.join('_')
-      renderToServer(param)
-    } else {
-      param = e.target.parentNode.childNodes[1].innerText.split('.')
-      popup.changenow(param[0], param[1], param[2])
-      param = param.join('_')
-      renderToServer(param)
-    }
+  let param = ''
+  if (e.target.nodeName == 'LI') {
+    param =
+      e.target.parentNode.parentNode.parentNode.childNodes[1].innerText.split(
+        '.'
+      )
+    popup.changenow(param[0], param[1], param[2])
+    param = param.join('_')
+    renderToServer(param)
+  } else if (e.target.nodeName == 'UL') {
+    param = e.target.parentNode.parentNode.childNodes[1].innerText.split('.')
+    popup.changenow(param[0], param[1], param[2])
+    param = param.join('_')
+    renderToServer(param)
+  } else if (e.target.nodeName == 'DIV') {
+    param = e.target.parentNode.childNodes[1].innerText.split('.')
+    popup.changenow(param[0], param[1], param[2])
+    param = param.join('_')
+    renderToServer(param)
   }
 }
 
