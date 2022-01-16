@@ -381,12 +381,10 @@ button {
 }
 
 #overviews > tr > td {
-  cursor: pointer;
   text-align: end;
   padding-bottom: 30px;
   padding-right: 10px;
   border-radius: 10px;
-  transition: all 0.3s;
 }
 
 .overview {
@@ -399,21 +397,27 @@ button {
 }
 
 .overview_todo_list {
+  cursor: pointer;
   background-color: white;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   height: 100%;
   border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.overview_todo_list:hover {
+  transform: scale(1.1);
 }
 
 .overview_items {
   height: 180px;
   overflow-y: scroll;
+  color: grey;
 }
 
 .overview_items li {
-  color: grey;
+  align-items: start;
+  text-align: start;
 }
 
 .overview_footer__input {
@@ -421,6 +425,25 @@ button {
   border: none;
   outline: none;
   font-size: 18px;
+}
+
+.overview_popup {
+  display: none;
+  position: absolute;
+  left: 28%;
+  top: 30%;
+  z-index: 2;
+}
+
+.background_cover {
+  background-color: black;
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 50%;
+  z-index: 1;
 }
 
 @media screen and (max-width: 661px) {

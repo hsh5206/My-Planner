@@ -23,6 +23,7 @@ const toDoRouter = express.Router()
 app.use('/todos', toDoRouter)
 
 toDoRouter.param('id', async (req, res, next, value) => {
+  console.log(value)
   let [data, nothing] = await pool.query(
     `SELECT * FROM Timelines WHERE time='${value}'`
   )

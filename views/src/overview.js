@@ -1,12 +1,24 @@
 'use strict'
 import Calender from './calender.js'
+import PopUp from './popup.js'
 const calender = new Calender()
+const popup = new PopUp()
 
+const popup_window = document.querySelector('.popup')
+const background_cover = document.querySelector('.background_cover')
 const clock = document.querySelector('#clock')
 const overViewBtn = document.querySelector('.overviewBtn')
 const allThing = document.querySelector('.container')
 const overviews = document.querySelector('.overviews_container')
 overViewBtn.addEventListener('click', () => change())
+const overViewTable = document.querySelector('.overviews_table')
+overViewTable.addEventListener('click', (e) => overViewTableClick(e))
+background_cover.addEventListener('click', () => {
+  popup_window.classList.remove('overview_popup')
+  background_cover.style.display = 'none'
+  popup.hide('overview')
+})
+
 let temp = []
 let year = 0
 let month = 0
@@ -16,6 +28,7 @@ let thisMonth = 0
 let arr_calendar = []
 
 function change() {
+  popup.hide()
   if (allThing.style.display == 'none') {
     allThing.style.display = 'flex'
     overViewBtn.innerHTML = '+ OverView'
@@ -109,7 +122,11 @@ function ItemPush(data, index, param) {
   const now = param.split('_').join('.')
   let text = ''
   for (let i = 0; i < data.length; i++) {
-    text += `<li>${data[i].todo}</li>`
+    if (data[i].isdone == 1) {
+      text += `<li class="line">${data[i].todo}</li>`
+    } else {
+      text += `<li>${data[i].todo}</li>`
+    }
   }
   temp[index] = `
   <td class="overview">
@@ -139,6 +156,53 @@ function reRenderOverviews(start, arr) {
     const overviews = document.querySelector('#overviews')
     overviews.innerHTML = temp.join('')
   }, 1000)
+}
+
+function overViewTableClick(e) {
+  popup.hide()
+  if (e.path.length < 10) {
+    return
+  } else {
+    let param = ''
+    if (e.target.nodeName == 'LI') {
+      param =
+        e.target.parentNode.parentNode.parentNode.childNodes[1].innerText.split(
+          '.'
+        )
+      popup.changenow(param[0], param[1], param[2])
+      param = param.join('_')
+      renderToServer(param)
+    } else if (e.target.nodeName == 'UL') {
+      param = e.target.parentNode.parentNode.childNodes[1].innerText.split('.')
+      popup.changenow(param[0], param[1], param[2])
+      param = param.join('_')
+      renderToServer(param)
+    } else {
+      param = e.target.parentNode.childNodes[1].innerText.split('.')
+      popup.changenow(param[0], param[1], param[2])
+      param = param.join('_')
+      renderToServer(param)
+    }
+  }
+}
+
+function renderToServer(param) {
+  //server
+  const config = {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+  fetch(`/todos/${param}`, config)
+    .then((res) => res.json())
+    .then((data) => {
+      return JSON.stringify(data)
+    })
+    .then((data) => popup.disablePopup(JSON.parse(data), 'overview'))
+    .catch((error) => console.log(error))
+  popup_window.classList.add('overview_popup')
+  background_cover.style.display = 'flex'
 }
 
 calender.changeYearMonth(2022, 1)

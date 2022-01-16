@@ -2,24 +2,32 @@
 
 export default class PopUp {
   constructor() {
-    this.popup = document.querySelector('.popup')
+    this.popup = document.querySelectorAll('.popup')
     this.work = document.querySelector('.work')
-    this.today = document.querySelector('.today')
+    this.today = document.querySelectorAll('.today')
     this.button = document.querySelector('.x')
     this.button.addEventListener('click', this.hide)
-    this.items = document.querySelector('.items')
-    this.input = document.querySelector('.footer__input')
-    this.addBtn = document.querySelector('.footer__button')
+    this.items = document.querySelectorAll('.items')
+    this.input = document.querySelectorAll('.footer__input')
+    this.addBtn = document.querySelectorAll('.footer__button')
 
     this.today_year
     this.today_month
     this.today_day
 
-    this.addBtn.addEventListener('click', () => {
+    this.addBtn[0].addEventListener('click', () => {
+      this.onAdd('overview')
+    })
+    this.addBtn[1].addEventListener('click', () => {
       this.onAdd()
     })
 
-    this.input.addEventListener('keypress', (event) => {
+    this.input[0].addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') {
+        this.onAdd('overview')
+      }
+    })
+    this.input[1].addEventListener('keypress', (event) => {
       if (event.key === 'Enter') {
         this.onAdd()
       }
@@ -27,53 +35,82 @@ export default class PopUp {
   }
 
   //pass
-  disablePopup(text) {
+  disablePopup(text, who) {
+    console.log(text, who)
     for (let i = 0; i < text.length; i++) {
-      this.printToDo(text[i])
+      this.printToDo(text[i], who)
     }
 
-    this.popup.style.display = 'flex'
+    if (who === 'overview') {
+      this.popup[0].style.display = 'flex'
+    } else {
+      this.popup[1].style.display = 'flex'
+    }
   }
 
   //pass
   changenow = (year, month, day) => {
-    this.today.innerHTML = `${year}.${month}.${day}`
+    this.today[0].innerHTML = `${year}.${month}.${day}`
+    this.today[1].innerHTML = `${year}.${month}.${day}`
     this.today_year = year
     this.today_month = month
     this.today_day = day
   }
 
   //pass
-  hide = () => {
+  hide = (who) => {
     const itemRow = document.querySelectorAll('.items > li')
     itemRow.forEach((node) => {
       node.remove()
     })
-
-    this.popup.style.display = 'none'
-    const temp = document.querySelector('.checked')
-    if (temp) {
-      temp.classList.remove('checked')
+    if (who === 'overview') {
+      this.popup[0].style.display = 'none'
+    } else {
+      this.popup[1].style.display = 'none'
+      const temp = document.querySelector('.checked')
+      if (temp) {
+        temp.classList.remove('checked')
+      }
     }
   }
 
   //pass
-  printToDo(data) {
+  printToDo(data, who) {
     const text = data.todo
-    const item = this.createItem(text, data.isdone)
-    this.items.appendChild(item)
+    const item = this.createItem(text, data.isdone, who)
+    if (who === 'overview') {
+      this.items[0].appendChild(item)
+    } else {
+      this.items[1].appendChild(item)
+    }
+
     item.scrollIntoView({ block: 'center' })
-    this.input.value = ''
-    this.input.focus()
+    if (who === 'overview') {
+      this.input[0].value = ''
+      this.input[0].focus()
+    } else {
+      this.input[1].value = ''
+      this.input[1].focus()
+    }
   }
 
-  onAdd() {
-    const text = this.input.value
+  onAdd(who) {
+    let text = ''
+    if (who === 'overview') {
+      text = this.input[0].value
+    } else {
+      text = this.input[1].value
+    }
+
     let param = ''
-    param = this.today.innerHTML.split('. ').join('_')
+    param = this.today[1].innerHTML.split('. ').join('_')
 
     if (text === '') {
-      this.input.focus()
+      if (who === 'overview') {
+        this.input[0].focus()
+      } else {
+        this.input[1].focus()
+      }
       return
     }
 
@@ -89,12 +126,18 @@ export default class PopUp {
       .then((res) => res.json())
       .then((response) => console.log('Success: ', JSON.stringify(response)))
       .catch((error) => console.log(error))
-    this.input.value = ''
-    this.input.focus()
-    this.printToDo({ todo: `${text}` })
+    if (who === 'overview') {
+      this.input[0].value = ''
+      this.input[0].focus()
+      this.printToDo({ todo: `${text}` }, 'overview')
+    } else {
+      this.input[1].value = ''
+      this.input[1].focus()
+      this.printToDo({ todo: `${text}` })
+    }
   }
 
-  createItem(text, option) {
+  createItem(text, option, who) {
     const itemRow = document.createElement('li')
     itemRow.setAttribute('class', 'item__row')
 
@@ -121,7 +164,12 @@ export default class PopUp {
       let text = itemRow.firstChild.firstChild.innerHTML
       text = String(text)
       let param = ''
-      param = this.today.innerHTML.split('. ').join('_')
+      if (who === 'overview') {
+        param = this.today[0].innerHTML.split('. ').join('_')
+      } else {
+        param = this.today[1].innerHTML.split('. ').join('_')
+      }
+
       const config = {
         method: 'post',
         body: JSON.stringify({ todo: text }),
@@ -154,7 +202,11 @@ export default class PopUp {
 
       // server
       let param = ''
-      param = this.today.innerHTML.split('. ').join('_')
+      if (who === 'overview') {
+        param = this.today[0].innerHTML.split('. ').join('_')
+      } else {
+        param = this.today[1].innerHTML.split('. ').join('_')
+      }
       const config = {
         method: 'post',
         body: JSON.stringify({ todo: text }),

@@ -111,7 +111,7 @@ export default class Calender {
     const month = String(this.current_month)
     const day = String(this.current_day)
 
-    popup.today.innerHTML = `${year}. ${month}. ${day}`
+    popup.today[1].innerHTML = `${year}. ${month}. ${day}`
     //server
     const config = {
       method: 'get',
