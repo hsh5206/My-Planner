@@ -380,36 +380,47 @@ button {
   display: none;
   position: absolute;
   top: 180px;
-  width: 1400px;
+  width: 100%;
+  height: 210%;
+  flex-direction: column;
 }
 
 .overviews_table {
   background-color: #677381;
   border-radius: 10px;
-  margin: 1%;
+  width: 100%;
+  height: 100%;
+  margin-top: 50px;
+  margin-bottom: 240px;
 }
 
 #overviews > tr > td {
   text-align: end;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   padding-right: 10px;
   border-radius: 10px;
 }
-
+#overviews {
+  width: 1em;
+  height: 1em;
+}
 .overview {
-  width: 200px;
+  width: 1em;
+  height: 160px;
 }
 
 .overview_day {
   color: white;
   text-align: center;
+  width: 100%;
 }
 
 .overview_todo_list {
+  width: 100%;
+  height: 160px;
   cursor: pointer;
   background-color: white;
   display: flex;
-  height: 100%;
   border-radius: 10px;
   transition: all 0.3s;
 }
@@ -419,7 +430,7 @@ button {
 }
 
 .overview_items {
-  height: 180px;
+  width: 140px;
   overflow-y: scroll;
   color: grey;
 }
@@ -427,20 +438,14 @@ button {
 .overview_items li {
   align-items: start;
   text-align: start;
-}
-
-.overview_footer__input {
-  width: 80%;
-  border: none;
-  outline: none;
-  font-size: 18px;
+  font-size: 1em;
 }
 
 .overview_popup {
   display: none;
   position: absolute;
-  left: 28%;
-  top: 30%;
+  left: 32%;
+  top: 25%;
   z-index: 2;
   transform: translate3d(0, 0, 2px);
   -webkit-transform: translate3d(0, 0, 2px);
@@ -451,12 +456,13 @@ button {
 }
 
 .background_cover {
+  margin-top: 50px;
   background-color: black;
   display: none;
   position: absolute;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 82%;
   opacity: 50%;
   z-index: 1;
   transform: translate3d(0, 0, 1px);
@@ -590,11 +596,11 @@ button {
     left: 5%;
   }
   .overview_popup {
-    width: 35%;
+    width: 100%;
     display: none;
     position: absolute;
-    left: 28%;
-    top: 30%;
+    left: 90%;
+    top: 35%;
     z-index: 2;
     transform: translate3d(0, 0, 2px);
     -webkit-transform: translate3d(0, 0, 2px);
@@ -617,5 +623,23 @@ button {
     z-index: 2;
     font-size: 35px;
     transform: translate(-5%, -5%);
+  }
+
+  .background_cover {
+    margin-top: 50px;
+    background-color: black;
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 286%;
+    height: 100%;
+    opacity: 50%;
+    z-index: 1;
+    transform: translate3d(0, 0, 1px);
+    -webkit-transform: translate3d(0, 0, 1px);
+    -webkit-transform: translateZ(1px);
+    -moz-transform: translateZ(1px);
+    -o-transform: translateZ(1px);
+    transform: translateZ(1px);
   }
 }

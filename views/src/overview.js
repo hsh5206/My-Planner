@@ -50,7 +50,7 @@ function change() {
 function renderOverviews(cyear, cmonth) {
   year = cyear
   month = cmonth
-  console.log(year, month)
+
   temp = []
   let month_day = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
@@ -75,7 +75,7 @@ function renderOverviews(cyear, cmonth) {
     }
   }
 
-  let visit = 1
+  let visit = 0
   temp.push('<tr>')
   for (let i = 0; i < arr_calendar.length; i++) {
     const cday = arr_calendar[i]
@@ -92,7 +92,7 @@ function renderOverviews(cyear, cmonth) {
       visit += 1
       temp.push(`
           <td class="overview">
-            <div class="overview_day">${year}.${month}.${day}</div>
+            <div class="overview_day">${year}. ${month}. ${day}</div>
             <div class="overview_todo_list">
               <ul class="overview_items"></ul>
             </div>
@@ -120,7 +120,7 @@ function toServer(index, thisday) {
 }
 
 function ItemPush(data, index, param) {
-  const now = param.split('_').join('.')
+  const now = param.split('_').join('. ')
   let text = ''
   for (let i = 0; i < data.length; i++) {
     if (data[i].isdone == 1) {
@@ -153,10 +153,11 @@ function reRenderOverviews(start, arr) {
       }
     }
     temp.push(`</tr>`)
+    console.log(temp)
 
     const overviews = document.querySelector('#overviews')
     overviews.innerHTML = temp.join('')
-  }, 1000)
+  }, 2000)
 }
 
 function overViewTableClick(e) {
@@ -165,18 +166,18 @@ function overViewTableClick(e) {
   if (e.target.nodeName == 'LI') {
     param =
       e.target.parentNode.parentNode.parentNode.childNodes[1].innerText.split(
-        '.'
+        '. '
       )
     popup.changenow(param[0], param[1], param[2])
     param = param.join('_')
     renderToServer(param)
   } else if (e.target.nodeName == 'UL') {
-    param = e.target.parentNode.parentNode.childNodes[1].innerText.split('.')
+    param = e.target.parentNode.parentNode.childNodes[1].innerText.split('. ')
     popup.changenow(param[0], param[1], param[2])
     param = param.join('_')
     renderToServer(param)
   } else if (e.target.nodeName == 'DIV') {
-    param = e.target.parentNode.childNodes[1].innerText.split('.')
+    param = e.target.parentNode.childNodes[1].innerText.split('. ')
     popup.changenow(param[0], param[1], param[2])
     param = param.join('_')
     renderToServer(param)

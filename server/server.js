@@ -50,6 +50,7 @@ toDoRouter.get('/:id', async (req, res) => {
 })
 
 toDoRouter.post('/:id/add', async (req, res) => {
+  console.log(req.data)
   try {
     const data = req.data.id
     const todo = req.body.todo

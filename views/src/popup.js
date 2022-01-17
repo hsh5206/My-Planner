@@ -1,5 +1,4 @@
 'use strict'
-
 export default class PopUp {
   constructor() {
     this.popup = document.querySelectorAll('.popup')
@@ -103,7 +102,12 @@ export default class PopUp {
     }
 
     let param = ''
-    param = this.today[1].innerHTML.split('. ').join('_')
+    if (who === 'overview') {
+      param = this.today[0].innerHTML.split('.').join('_')
+    } else {
+      param = this.today[1].innerHTML.split('. ').join('_')
+    }
+    console.log(param)
 
     if (text === '') {
       if (who === 'overview') {
