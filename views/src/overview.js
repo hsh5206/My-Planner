@@ -64,7 +64,7 @@ export default class OverView {
     let month_day = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
     if (this.month == 2) {
-      if (calender.checkLeapYear(year)) month_day[1] = 29
+      if (calender.checkLeapYear(this.year)) month_day[1] = 29
     }
 
     let first_day_of_week = calender.getFirstDayOfWeek(this.year, this.month)
