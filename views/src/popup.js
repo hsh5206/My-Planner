@@ -35,7 +35,6 @@ export default class PopUp {
 
   //pass
   disablePopup(text, who) {
-    console.log(text, who)
     for (let i = 0; i < text.length; i++) {
       this.printToDo(text[i], who)
     }
@@ -74,9 +73,9 @@ export default class PopUp {
   }
 
   //pass
-  printToDo(data, who) {
+  printToDo(data, who, param) {
     const text = data.todo
-    const item = this.createItem(text, data.isdone, who)
+    const item = this.createItem(text, data.isdone, who, param)
     if (who === 'overview') {
       this.items[0].appendChild(item)
     } else {
@@ -107,7 +106,6 @@ export default class PopUp {
     } else {
       param = this.today[1].innerHTML.split('. ').join('_')
     }
-    console.log(param)
 
     if (text === '') {
       if (who === 'overview') {
@@ -133,7 +131,7 @@ export default class PopUp {
     if (who === 'overview') {
       this.input[0].value = ''
       this.input[0].focus()
-      this.printToDo({ todo: `${text}` }, 'overview')
+      this.printToDo({ todo: `${text}` }, 'overview', param)
     } else {
       this.input[1].value = ''
       this.input[1].focus()
@@ -164,7 +162,7 @@ export default class PopUp {
     } else {
       itemRow.classList.remove('line')
     }
-    checkBtn.addEventListener('click', () => {
+    checkBtn.addEventListener('click', (who) => {
       let text = itemRow.firstChild.firstChild.innerHTML
       text = String(text)
       let param = ''
@@ -181,7 +179,7 @@ export default class PopUp {
           'Content-Type': 'application/json',
         },
       }
-
+      console.log(param)
       if (itemRow.classList.contains('line')) {
         itemRow.classList.remove('line')
         fetch(`/todos/${param}/undone`, config)
@@ -200,7 +198,7 @@ export default class PopUp {
     const deleteBtn = document.createElement('button')
     deleteBtn.setAttribute('class', 'item__delete')
     deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>'
-    deleteBtn.addEventListener('click', () => {
+    deleteBtn.addEventListener('click', (who) => {
       let text = itemRow.firstChild.firstChild.innerHTML
       text = String(text)
 

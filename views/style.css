@@ -407,6 +407,11 @@ button {
 .overview {
   width: 1em;
   height: 160px;
+  transition: all 0.3s;
+}
+
+.overview:hover {
+  transform: scale(1.1);
 }
 
 .overview_day {
@@ -422,11 +427,6 @@ button {
   background-color: white;
   display: flex;
   border-radius: 10px;
-  transition: all 0.3s;
-}
-
-.overview_todo_list:hover {
-  transform: scale(1.1);
 }
 
 .overview_items {
