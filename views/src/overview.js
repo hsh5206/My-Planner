@@ -30,7 +30,6 @@ export default class OverView {
       this.popup_window.classList.remove('overview_popup')
       this.background_cover.style.display = 'none'
       popup.hide('overview')
-      console.log(`${this.year}.${this.month}.${this.day}`)
       this.overViewServer(`${this.year}.${this.month}.${this.day}`)
     })
   }

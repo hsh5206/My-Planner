@@ -35,6 +35,7 @@ toDoRouter.param('id', async (req, res, next, value) => {
     )
     data = ndata
   }
+  console.log(data)
   req.data = data[0]
   next()
 })
@@ -50,7 +51,6 @@ toDoRouter.get('/:id', async (req, res) => {
 })
 
 toDoRouter.post('/:id/add', async (req, res) => {
-  console.log(req.data)
   try {
     const data = req.data.id
     const todo = req.body.todo
@@ -65,8 +65,11 @@ toDoRouter.post('/:id/add', async (req, res) => {
 
 toDoRouter.post('/:id/delete', async (req, res) => {
   try {
+    const num = req.body.num
     const text = req.body.todo
-    const id = await pool.query(`SELECT id FROM Todos WHERE todo = '${text}'`)
+    const id = await pool.query(
+      `SELECT id FROM Todos WHERE todo='${text}' and num=${num}`
+    )
     const todos = await pool.query(
       `DELETE FROM Todos WHERE id = ${id[0][0].id}`
     )
@@ -78,8 +81,11 @@ toDoRouter.post('/:id/delete', async (req, res) => {
 
 toDoRouter.post('/:id/done', async (req, res) => {
   try {
+    const num = req.body.num
     const text = req.body.todo
-    const id = await pool.query(`SELECT id FROM Todos WHERE todo = '${text}'`)
+    const id = await pool.query(
+      `SELECT id FROM Todos WHERE todo='${text}' and num=${num}`
+    )
     const todos = await pool.query(
       `UPDATE Todos SET isdone = 1 WHERE id = ${id[0][0].id}`
     )
@@ -91,8 +97,11 @@ toDoRouter.post('/:id/done', async (req, res) => {
 
 toDoRouter.post('/:id/undone', async (req, res) => {
   try {
+    const num = req.body.num
     const text = req.body.todo
-    const id = await pool.query(`SELECT * FROM Todos WHERE todo = '${text}'`)
+    const id = await pool.query(
+      `SELECT * FROM Todos WHERE todo='${text}' and num=${num}`
+    )
     const todos = await pool.query(
       `UPDATE Todos SET isdone = 0 WHERE id = ${id[0][0].id}`
     )

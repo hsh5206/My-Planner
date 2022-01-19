@@ -14,6 +14,8 @@ export default class PopUp {
     this.today_month
     this.today_day
 
+    this.num = 0
+
     this.addBtn[0].addEventListener('click', () => {
       this.onAdd('overview')
     })
@@ -171,28 +173,7 @@ export default class PopUp {
       } else {
         param = this.today[1].innerHTML.split('. ').join('_')
       }
-
-      const config = {
-        method: 'post',
-        body: JSON.stringify({ todo: text }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-      console.log(param)
-      if (itemRow.classList.contains('line')) {
-        itemRow.classList.remove('line')
-        fetch(`/todos/${param}/undone`, config)
-          .then((res) => res.json())
-          .then((response) => console.log('Success: ', response))
-          .catch((error) => console.log(error))
-      } else {
-        itemRow.classList.add('line')
-        fetch(`/todos/${param}/done`, config)
-          .then((res) => res.json())
-          .then((response) => console.log('Success: ', response))
-          .catch((error) => console.log(error))
-      }
+      this.checkNumFromServer(param, text, itemRow)
     })
 
     const deleteBtn = document.createElement('button')
@@ -202,24 +183,13 @@ export default class PopUp {
       let text = itemRow.firstChild.firstChild.innerHTML
       text = String(text)
 
-      // server
       let param = ''
       if (who === 'overview') {
         param = this.today[0].innerHTML.split('. ').join('_')
       } else {
         param = this.today[1].innerHTML.split('. ').join('_')
       }
-      const config = {
-        method: 'post',
-        body: JSON.stringify({ todo: text }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-      fetch(`/todos/${param}/delete`, config)
-        .then((res) => res.json())
-        .then((response) => console.log('Success: ', response))
-        .catch((error) => console.log(error))
+      this.deleteNumFromServer(param, text)
       itemRow.remove()
     })
 
@@ -234,5 +204,72 @@ export default class PopUp {
     itemRow.appendChild(item)
     itemRow.appendChild(itemDivider)
     return itemRow
+  }
+
+  deleteNumFromServer(param, text) {
+    param = param.split('.').join('_')
+    const config = {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    fetch(`/todos/${param}`, config)
+      .then((res) => res.json())
+      .then((data) => JSON.stringify(data))
+      .then((data) => this.delete(JSON.parse(data), param, text))
+      .catch((error) => console.log(error))
+  }
+
+  delete(data, param, text) {
+    const config = {
+      method: 'post',
+      body: JSON.stringify({ num: data[0].num, todo: text }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    fetch(`/todos/${param}/delete`, config)
+      .then((res) => res.json())
+      .then((response) => console.log('Success: ', response))
+      .catch((error) => console.log(error))
+  }
+
+  checkNumFromServer(param, text, itemRow) {
+    param = param.split('.').join('_')
+    const config = {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    fetch(`/todos/${param}`, config)
+      .then((res) => res.json())
+      .then((data) => JSON.stringify(data))
+      .then((data) => this.check(JSON.parse(data), param, text, itemRow))
+      .catch((error) => console.log(error))
+  }
+
+  check(data, param, text, itemRow) {
+    const config = {
+      method: 'post',
+      body: JSON.stringify({ num: data[0].num, todo: text }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    if (itemRow.classList.contains('line')) {
+      itemRow.classList.remove('line')
+      fetch(`/todos/${param}/undone`, config)
+        .then((res) => res.json())
+        .then((response) => console.log('Success: ', response))
+        .catch((error) => console.log(error))
+    } else {
+      itemRow.classList.add('line')
+      fetch(`/todos/${param}/done`, config)
+        .then((res) => res.json())
+        .then((response) => console.log('Success: ', response))
+        .catch((error) => console.log(error))
+    }
   }
 }
