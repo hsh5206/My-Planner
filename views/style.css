@@ -114,11 +114,13 @@ a {
 .month_container_year {
   margin-top: 20px;
   text-align: center;
+  justify-content: center;
   font-size: 40px;
 }
 .month_container_year > button {
   font-size: 30px;
   transition-duration: 1s;
+  height: auto;
 }
 .month_container_year > button:first-child:hover {
   transform: scale(1.2) translateX(-50%);
@@ -145,6 +147,7 @@ a {
 }
 #month_container td:hover {
   background-color: #677381;
+  cursor: pointer;
 }
 
 .table {
@@ -488,6 +491,11 @@ button {
     margin-left: 10px;
     margin-right: 10px;
   }
+
+  .month_container {
+    height: 100%;
+  }
+
   .work {
     position: static;
     margin-right: 0px;
@@ -528,7 +536,7 @@ button {
   .today {
     position: relative;
     display: bolci;
-    width: 120px;
+    width: 122px;
     left: 20px;
     top: 0px;
     margin-top: 3px;
@@ -609,6 +617,7 @@ button {
     -o-transform: translateZ(2px);
     transform: translateZ(2px);
   }
+
   #weather {
     position: absolute;
     right: 30px;
