@@ -26,12 +26,12 @@ PWA를 이용한 웹 & 모바일 & 데스크탑앱
 <br/>
 
 **Use**
-|                use        |        api          |
-|----------------|-----------------------------------|
-|`HTML & CSS`    |`OpenWeatherMap`        https://api.openweathermap.org           |
-|`javaScript`    |                        |
-|`nodejs`        |        |
-|`mysql`         |                   |
+|                use        |                  api                 |
+|------------------|-----------------------------------------------|
+|`HTML & CSS`      |`OpenWeatherMap` https://api.openweathermap.org|
+|`javaScript`      |                                               |
+|`nodejs(express)` |                                               |
+|`mysql`           |                                               |
 
 <br/>
 
