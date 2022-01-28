@@ -13,6 +13,12 @@ app.use(bodyParser.json())
 app.use(express.static('./views'))
 
 app.get('/', (req, res) => {
+  fs.readFile('.views/login.html', 'utf-8', (err, data) => {
+    res.writeHead(200, { Content_Type: 'text/html' })
+    res.end(ejs.render(data))
+  })
+})
+app.get('/myplan', (req, res) => {
   fs.readFile('.views/index.html', 'utf-8', (err, data) => {
     res.writeHead(200, { Content_Type: 'text/html' })
     res.end(ejs.render(data))
