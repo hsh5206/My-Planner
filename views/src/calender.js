@@ -165,7 +165,7 @@ export default class Calender {
       arr_calendar.push('')
     }
 
-    for (let i = 1; i < month_day[month - 1]; i++) {
+    for (let i = 1; i <= month_day[month - 1]; i++) {
       arr_calendar.push(String(i))
     }
 
@@ -176,10 +176,11 @@ export default class Calender {
       }
     }
 
+    console.log(arr_calendar)
+
     this.renderCalendar(arr_calendar, year, month)
   }
 
-  //pass
   renderCalendar(data, year, month) {
     let isTrue = 0
     if (year == this.today_year && month == this.today_month) {
