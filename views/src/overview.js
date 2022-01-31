@@ -72,7 +72,7 @@ export default class OverView {
       this.arr_calendar.push('')
     }
 
-    for (let i = 1; i < month_day[this.month - 1]; i++) {
+    for (let i = 1; i <= month_day[this.month - 1]; i++) {
       this.arr_calendar.push(String(i))
     }
 
